@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry key="host">smtp.gmail.com</entry>
+    <entry key="password">ayuaklckgxbbooph</entry>
+    <entry key="user">alumnosdamquevedo@gmail.com</entry>
+
+</properties>

@@ -1,0 +1,32 @@
+
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+P
+ src/main/java/model/Usuario.java,7\6\762a1b0133bf761835b3bc3e0d55de9af307adbe
+Y
+)src/main/java/server/rest/MandarMail.java,9\5\9515447312d34a4a036d8784848e0c49d08e9be4
+^
+.src/main/java/server/common/Configuration.java,5\0\5021d5d8c65cbe66309057836aed7c7ae72113f2
+T
+$src/main/java/server/MandarMail.java,5\6\563ea1cf2a77a59b0cb4b9d83ed0df11f1c97958
+]
+-src/main/java/server/servlet/ServletMail.java,a\d\ad42217988d8bf4347c50b062c5f429685370733
+O
+src/main/java/server/Utils.java,d\6\d68c36ff357548bc106145dcde33f52a4cb0445a
+_
+/src/main/java/server/rest/JAXRSApplication.java,7\b\7bc338bda882b61288a9f5597a8b98c328d6571f
+]
+-.idea/sonarlint/securityhotspotstore/index.pb,8\8\88a9255124c95bdc913197c120a8d560edc59c8e
+w
+G.idea/sonarlint/issuestore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,8\6\863e0292fd7e9b3e74dafd6cc01f73ba76346482
+Å
+Q.idea/sonarlint/securityhotspotstore/4/4/442292b8a7efeabbe4cc176709b833b1792140ec,2\c\2cabb939da04d3de3a200bf2b575690e1a16316d
+S
+#.idea/sonarlint/issuestore/index.pb,9\f\9fe84ebb15faf917b7def6236dba604453cc61e0
+w
+G.idea/sonarlint/issuestore/7/6/762a1b0133bf761835b3bc3e0d55de9af307adbe,f\3\f34a83c62cf7fb9586e9a734e5f659568e6eabc8
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+Å
+Q.idea/sonarlint/securityhotspotstore/7/6/762a1b0133bf761835b3bc3e0d55de9af307adbe,c\9\c9cd2f1cade7d0ab4d156920fa1dbd8c51a0bc08
