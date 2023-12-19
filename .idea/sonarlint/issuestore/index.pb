@@ -3,8 +3,6 @@
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 P
  src/main/java/model/Usuario.java,7\6\762a1b0133bf761835b3bc3e0d55de9af307adbe
-Y
-)src/main/java/server/rest/MandarMail.java,9\5\9515447312d34a4a036d8784848e0c49d08e9be4
 ^
 .src/main/java/server/common/Configuration.java,5\0\5021d5d8c65cbe66309057836aed7c7ae72113f2
 T
@@ -30,3 +28,17 @@ G.idea/sonarlint/issuestore/7/6/762a1b0133bf761835b3bc3e0d55de9af307adbe,f\3\f3
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 Å
 Q.idea/sonarlint/securityhotspotstore/7/6/762a1b0133bf761835b3bc3e0d55de9af307adbe,c\9\c9cd2f1cade7d0ab4d156920fa1dbd8c51a0bc08
+Q
+!src/main/java/dao/DaoUsuario.java,4\9\491ff314333424da71ae410582f59337863d4961
+R
+"src/main/java/data/StaticList.java,0\b\0b7dd013c83ae0fa76c60659c1e10c8760151919
+U
+%src/main/java/dao/DaoUsuarioImpl.java,a\6\a6e8ebfb43b5c01fabe75309b7cb827eeb3482b1
+T
+$src/main/java/services/userServ.java,3\e\3e772e0dfc4e44d5eed9f99e35ac47a5598a1296
+T
+$src/main/java/services/UserServ.java,5\5\55e2d963073ce526b5132a1a6dd6e0c3da32b8ce
+X
+(src/main/java/services/UserServices.java,d\8\d8cfea274b2fbb870143ee32fbca8bbf270d7896
+b
+2src/main/java/server/rest/restUsers/RestLogin.java,8\0\802b47afd0d453e96f4c101065bf0c4bce584829
