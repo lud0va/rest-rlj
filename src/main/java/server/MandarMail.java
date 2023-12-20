@@ -1,7 +1,6 @@
 package server;
 
 import jakarta.inject.Inject;
-import jakarta.inject.Singleton;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
 import jakarta.mail.Session;
@@ -14,18 +13,15 @@ import server.common.Configuration;
 import java.util.Properties;
 
 
-
 @Log4j2
-@Singleton
-public class MandarMail {
 
+public class MandarMail {
+    @Inject
     private Configuration config;
 
 
-
-
     public void generateAndSendEmail(String to, String msg, String subject) throws MessagingException {
-        config = Configuration.getInstance();
+
         Properties mailServerProperties;
         Session getMailSession;
         MimeMessage generateMailMessage;
@@ -50,14 +46,13 @@ public class MandarMail {
         Transport transport = getMailSession.getTransport("smtp");
 
 
-        transport.connect(
-                config.getProperty("host"),
+      /*  transport.connect(config.getProperty("host"),
                 config.getProperty("user"),
-                config.getProperty("password")
-        );
-        /*transport.connect("smtp.gmail.com",
+                config.getProperty("password"));*/
+
+        transport.connect("smtp.gmail.com",
                 "alumnosdamquevedo@gmail.com",
-                "uyhqfbbfmszvuykt");*/
+                "ayuaklckgxbbooph");
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
     }

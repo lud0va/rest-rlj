@@ -5,11 +5,11 @@ import jakarta.inject.Inject;
 
 import model.Usuario;
 
-public class UserServices {
+public class ServiciosUsuario {
     private final DaoUsuario daoUsuario;
 
     @Inject
-    public UserServices(DaoUsuario daoUsuario) {
+    public ServiciosUsuario(DaoUsuario daoUsuario) {
         this.daoUsuario = daoUsuario;
     }
 
