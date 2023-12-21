@@ -6,18 +6,18 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import model.Usuario;
-import services.UserServices;
+import services.ServiciosUsuario;
 
 
 @Path("/login")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestLogin {
-    private UserServices serv;
+    private ServiciosUsuario serv;
 
     @Inject
-    public RestLogin(UserServices serv) {
-        this.serv = serv;
+    public RestLogin(ServiciosUsuario serv) {
+        //this.serv = serv;
     }
 
     @GET

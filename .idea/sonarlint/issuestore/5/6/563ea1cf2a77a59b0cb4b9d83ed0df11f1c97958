@@ -1,6 +1,9 @@
 
-w
-java:S1450"URemove the "config" field and declare it as a local variable in the relevant methods.(–Ü¥ßüÿÿÿÿ8÷‚ÜÈ1
-]	java:S125<"<This block of commented-out lines of code should be removed.(âø¯¥ûÿÿÿÿ8ƒÜÈ1
+Q	java:S1257"<This block of commented-out lines of code should be removed.(×Œ±í
 T
-java:S1128"2Remove this unused import 'jakarta.inject.Inject'.(‘ø”şÿÿÿÿ8ò¯ØÈ1
+java:S1128"2Remove this unused import 'jakarta.inject.Inject'.(‘ø”şÿÿÿÿ8ŞşÑŒÈ1
+R
+java:S1128
+"5Remove this unused import 'lombok.NoArgsConstructor'.(¸¨›8ŞşÑŒÈ1
+E
+java:S1068"*Remove this unused "config" private field.(–Ü¥ßüÿÿÿÿ
