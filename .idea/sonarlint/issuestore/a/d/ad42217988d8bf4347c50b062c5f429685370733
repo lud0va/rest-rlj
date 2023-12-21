@@ -1,7 +1,13 @@
 
 —
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‹¨¯¿
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‹¨¯¿
+u
+java:S1450"SRemove the "mail" field and declare it as a local variable in the relevant methods.(¶ÊÆìüÿÿÿÿ8ßÂ…íÈ1
+H
+java:S1948"&Make "mail" transient or serializable.(¶ÊÆìüÿÿÿÿ8ãÂ…íÈ1
 P
-java:S1161":Add the "@Override" annotation above this method signature(‹¨¯¿
-U
-java:S1161":Add the "@Override" annotation above this method signature(Ïû©Öûÿÿÿÿ
+java:S1161":Add the "@Override" annotation above this method signature(‹¨¯¿
+\
+java:S1161":Add the "@Override" annotation above this method signature(Ïû©Öûÿÿÿÿ8íÂ…íÈ1
+T
+java:S1128"2Remove this unused import 'jakarta.inject.Inject'.(‘ø”şÿÿÿÿ8úÂ…íÈ1

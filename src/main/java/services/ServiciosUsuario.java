@@ -1,15 +1,17 @@
 package services;
 
 import dao.DaoUsuario;
+import dao.DaoUsuarioImpl;
+import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
 
 import model.Usuario;
-
+@Default
 public class ServiciosUsuario {
-    private final DaoUsuario daoUsuario;
+    private final DaoUsuarioImpl daoUsuario;
 
     @Inject
-    public ServiciosUsuario(DaoUsuario daoUsuario) {
+    public ServiciosUsuario(DaoUsuarioImpl daoUsuario) {
         this.daoUsuario = daoUsuario;
     }
 

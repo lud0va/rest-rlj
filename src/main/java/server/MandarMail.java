@@ -16,7 +16,7 @@ import java.util.Properties;
 @Log4j2
 
 public class MandarMail {
-    @Inject
+
     private Configuration config;
 
 
