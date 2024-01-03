@@ -11,8 +11,8 @@ import java.util.List;
 public class StaticList {
 
         public static final List<Usuario> usuarios=new ArrayList<>(List.of(
-           new Usuario("admin","luis.decena@educa.madrid.org","luis","",null,true)
-
+           new Usuario("admin","luis.decena@educa.madrid.org","luis","","",null,true),
+           new Usuario("usuario","luis@s.s.s","s","","",null,true)
         ));
 
 

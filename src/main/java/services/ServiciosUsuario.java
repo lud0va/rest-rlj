@@ -6,6 +6,9 @@ import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
 
 import model.Usuario;
+
+import java.util.List;
+
 @Default
 public class ServiciosUsuario {
     private final DaoUsuarioImpl daoUsuario;
@@ -16,12 +19,20 @@ public class ServiciosUsuario {
     }
 
 
-    public Boolean login(Usuario usuario){
-        Usuario us=daoUsuario.login(usuario);
-        if (us!=null){
-            return true;
-        }
+    public Usuario login(Usuario usuario){
 
-        return false ;
+        return daoUsuario.login(usuario);
     }
+
+
+    public Boolean register(Usuario usuario){
+        return daoUsuario.register(usuario);
+
+    }
+
+    public Boolean verify(Usuario user){
+        return daoUsuario.verifyUser(user);
+    }
+
+    public List<Usuario> getAll(){return daoUsuario.getAll();}
 }

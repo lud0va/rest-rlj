@@ -49,8 +49,6 @@ Q.idea/sonarlint/securityhotspotstore/a/6/a6e8ebfb43b5c01fabe75309b7cb827eeb3482
 w
 G.idea/sonarlint/issuestore/7/b/7bc338bda882b61288a9f5597a8b98c328d6571f,4\0\408e07de0f4b587556ca8572e945d119b7729fc9
 Å
-Q.idea/sonarlint/securityhotspotstore/d/8/d8cfea274b2fbb870143ee32fbca8bbf270d7896,f\9\f9341b01f8c575a8755cba67b2c3fd8cdd9a9487
-Å
 Q.idea/sonarlint/securityhotspotstore/d/6/d68c36ff357548bc106145dcde33f52a4cb0445a,f\0\f06000d88e6f11ab363d779ce08887f69610a9ff
 w
 G.idea/sonarlint/issuestore/8/8/88a9255124c95bdc913197c120a8d560edc59c8e,a\e\ae9ddf453f55affea2d6b9e3973cac1eb2efb4e1
@@ -62,8 +60,6 @@ w
 G.idea/sonarlint/issuestore/a/6/a6e8ebfb43b5c01fabe75309b7cb827eeb3482b1,9\9\994c4a4b921674a1b99df41fded37e199891adac
 Å
 Q.idea/sonarlint/securityhotspotstore/c/9/c9cd2f1cade7d0ab4d156920fa1dbd8c51a0bc08,5\8\5891d4eac5deb7a339cf5805645752e94b2ac2e6
-Å
-Q.idea/sonarlint/securityhotspotstore/8/0/802b47afd0d453e96f4c101065bf0c4bce584829,b\6\b63b5e17a4cf4657766879b837b54053bbf947ad
 w
 G.idea/sonarlint/issuestore/9/f/9fe84ebb15faf917b7def6236dba604453cc61e0,f\0\f0e0f9cec86fe4b939ae22be5264c758801eb28f
 Å
@@ -162,8 +158,6 @@ w
 G.idea/sonarlint/issuestore/f/0/f0e0f9cec86fe4b939ae22be5264c758801eb28f,5\0\50e216b4439d2538168c3ddca9c0c2fe23bd1c02
 w
 G.idea/sonarlint/issuestore/a/5/a50409b828ac76dee7e89b42d2f16223d17bb502,4\c\4c1dce35709dff93c8a1f99e557bb9be1f65a619
-w
-G.idea/sonarlint/issuestore/f/9/f9341b01f8c575a8755cba67b2c3fd8cdd9a9487,3\9\39deb55311386c5ccbd0f900a4a7695158e94991
 Å
 Q.idea/sonarlint/securityhotspotstore/1/a/1ab05253cab3be3c790b7e3b038344728da1e83b,8\7\87dd58c5df925f51a9fed6e585e8ddca80dd9645
 Å
@@ -193,8 +187,6 @@ Q.idea/sonarlint/securityhotspotstore/c/e/ceb9e9d1714c4c9702a63c09f8c940e62efc17
 w
 G.idea/sonarlint/issuestore/c/e/ceb9e9d1714c4c9702a63c09f8c940e62efc1727,7\d\7d16930950b6659e7de8d0ee49284a6ec9de41e8
 Å
-Q.idea/sonarlint/securityhotspotstore/b/6/b63b5e17a4cf4657766879b837b54053bbf947ad,5\a\5a383f96d2208d5b9273c5467b07d414a920f50d
-Å
 Q.idea/sonarlint/securityhotspotstore/b/b/bbf202272a96de5cd6b6828ffdc55fb3ce45289c,4\8\4863281891d32ef796d6f680d78cb100e7c940be
 Å
 Q.idea/sonarlint/securityhotspotstore/b/9/b9c9c073372a74263718dd348eeb7dcea602ee68,a\b\ab1b9241ac6fc3871494a0beb83a1dc1cbe4f931
@@ -223,8 +215,6 @@ Q.idea/sonarlint/securityhotspotstore/f/0/f0e0f9cec86fe4b939ae22be5264c758801eb2
 Å
 Q.idea/sonarlint/securityhotspotstore/f/0/f06000d88e6f11ab363d779ce08887f69610a9ff,a\d\ad66c29c3ee97e96eb0b6f2f7792b7a00e5a27a9
 Å
-Q.idea/sonarlint/securityhotspotstore/f/9/f9341b01f8c575a8755cba67b2c3fd8cdd9a9487,d\4\d4060f78976c831bc7fc68327106930aca2d4c56
-Å
 Q.idea/sonarlint/securityhotspotstore/f/6/f6d8310b47b1802ff534ff6900f24d2d3b76c4f1,d\4\d49052b5c99e4aed190a06219a866f7dc2d8b67d
 w
 G.idea/sonarlint/issuestore/d/3/d3e004f9533b56594b8712c0b0388e54386b14c3,a\3\a3f8b2e084e460fe8d197f5f1b68c749721c34fc
@@ -241,8 +231,6 @@ Q.idea/sonarlint/securityhotspotstore/9/f/9fbae7634f95b80fb361c02ad97b5a9426fbbb
 Å
 Q.idea/sonarlint/securityhotspotstore/8/8/88a81407c777b0b749c21216e6eaa4d4cb91c9b2,0\8\081762ebbee27d621d00e0bedc2e57edf8b6622f
 w
-G.idea/sonarlint/issuestore/b/6/b63b5e17a4cf4657766879b837b54053bbf947ad,1\3\136f8cf2dc80ccb55c7a4e3af7c267abcb2aa1ae
-w
 G.idea/sonarlint/issuestore/b/b/bbf202272a96de5cd6b6828ffdc55fb3ce45289c,8\4\84e95bd0ea795e5307464eb72e7bd95d9f673c00
 w
 G.idea/sonarlint/issuestore/b/9/b9c9c073372a74263718dd348eeb7dcea602ee68,b\d\bd4fc3b78926d8666493f1650559747f7b0d6547
@@ -252,3 +240,15 @@ w
 G.idea/sonarlint/issuestore/e/d/ed67eb178d523a4b3f117dcbe0eda5196367ceec,8\a\8a6dae537be9f47878c6964c6ee40cab0ca75e28
 w
 G.idea/sonarlint/issuestore/e/0/e05022987a9152da5eb85a76446777774502c1b7,6\c\6c58289851458dd4c9d202f975dd03058ea6bc46
+\
+,src/main/java/server/rest/RestJugadores.java,0\a\0abbff626f055c15d172e7689a5f3030fd6aca12
+X
+(src/main/java/server/di/KeyProvider.java,3\9\393b605129eabc116cff5d0225394e6f880e6534
+h
+8src/main/java/server/security/InMemoryIdentityStore.java,e\c\ec1e208fd4c296afe8e2acf90dca83d7c2287b93
+Z
+*src/main/java/server/security/JWTAuth.java,c\4\c4fd96150c37e51881a84168d0b609488b1ca634
+w
+G.idea/sonarlint/issuestore/1/a/1ab05253cab3be3c790b7e3b038344728da1e83b,c\3\c3596e5f26c268f8c7ceda09addf002059ce07a9
+w
+G.idea/sonarlint/issuestore/8/e/8e3511069e1a2606fe9759a2101ac6edd9344393,c\0\c0b3484f9a8de213f3de1eb58456cbe20f02024e

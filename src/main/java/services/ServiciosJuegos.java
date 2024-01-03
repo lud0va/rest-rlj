@@ -20,4 +20,24 @@ public class ServiciosJuegos {
     public List<Juegos> getAll(){
         return daoJuegos.getAll();
     }
+
+    public List<Juegos> getGamesPorJugador(int idjugadir){
+        return daoJuegos.getGamePorPlayer(idjugadir);
+    }
+    public Boolean deleteGame(int id){
+        return daoJuegos.deletegame(id);
+    }
+
+    public Boolean addGame(Juegos juegos){
+        return daoJuegos.addGame(juegos);
+    }
+    public Boolean update(Juegos juegos){
+        return daoJuegos.updateGame(juegos);
+    }
+    public Juegos getJuego(int id){
+        return daoJuegos.getGame(id);
+    }
+
+
 }
+
