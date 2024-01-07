@@ -39,12 +39,9 @@ public class JWTAuth implements HttpAuthenticationMechanism {
                                                 HttpServletResponse response
             , HttpMessageContext httpMessageContext) throws AuthenticationException {
         CredentialValidationResult c = CredentialValidationResult.INVALID_RESULT;
-        if (!httpMessageContext.isProtected())
-            return httpMessageContext.doNothing();
+
 
         String header = request.getHeader(HttpHeaders.AUTHORIZATION);
-
-        System.out.println(header);
 
         if (header != null) {
 
@@ -64,11 +61,12 @@ public class JWTAuth implements HttpAuthenticationMechanism {
 
                     if (role.equals("admin") || role.equals("usuario")) {
                         request.getSession().setAttribute("USERLOGIN", new CredentialValidationResult(subject, Collections.singleton(role)));
-                        securityContext.isUserInRole(role);
+
 
                     }
 
                 } catch (JwtException e) {
+
                     throw new RuntimeException(e);
                 }
             }

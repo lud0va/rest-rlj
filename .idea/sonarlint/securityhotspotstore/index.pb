@@ -252,3 +252,5 @@ w
 G.idea/sonarlint/issuestore/1/a/1ab05253cab3be3c790b7e3b038344728da1e83b,c\3\c3596e5f26c268f8c7ceda09addf002059ce07a9
 w
 G.idea/sonarlint/issuestore/8/e/8e3511069e1a2606fe9759a2101ac6edd9344393,c\0\c0b3484f9a8de213f3de1eb58456cbe20f02024e
+W
+'src/main/java/server/rest/RestToke.java,6\7\67225b63745bd9bdb8c427cafbead4053f8f1f25

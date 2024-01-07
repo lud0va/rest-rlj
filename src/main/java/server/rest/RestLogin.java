@@ -45,24 +45,13 @@ public class RestLogin {
 
 
         Usuario usuario = serv.login(new Usuario(mail, passwrd));
-
+        request.getSession().setAttribute("usernow",usuario);
         if (usuario != null && usuario.isActivado()) {
 
 
-            String token = Jwts.builder()
-                    .setSubject(usuario.getEmail())
-                    .claim("role", usuario.getRol())
-                    .setExpiration(Date
-                            .from(LocalDateTime.now().plusSeconds(60)
-                                    .atZone(ZoneId.systemDefault()).toInstant()))
-                    .signWith(key22.key())
-                    .compact();
 
 
-
-            return Response.status(Response.Status.ACCEPTED)
-                    .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
-                    .build();
+            return Response.status(Response.Status.ACCEPTED).build();
         }else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
