@@ -16,7 +16,7 @@ import java.util.Properties;
 @Log4j2
 
 public class MandarMail {
-    @Inject
+
     private Configuration config;
 
 
@@ -52,7 +52,7 @@ public class MandarMail {
 
         transport.connect("smtp.gmail.com",
                 "alumnosdamquevedo@gmail.com",
-                "ayuaklckgxbbooph");
+                "uyhqfbbfmszvuykt");
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
     }
