@@ -12,7 +12,7 @@ public interface DaoUsuario {
 
        Boolean verifyUser(Usuario usuario);
 
-       void cambiarPasswrd(String mail, String newpasswrd);
+       Boolean cambiarPasswrd(String mail, String newpasswrd);
        List<Usuario> getAll();
 
 

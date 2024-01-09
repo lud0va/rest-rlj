@@ -35,4 +35,8 @@ public class ServiciosUsuario {
     }
 
     public List<Usuario> getAll(){return daoUsuario.getAll();}
+
+    public Boolean cambiarContraseña(String email,String passw){
+        return daoUsuario.cambiarPasswrd(email,passw);
+    }
 }
