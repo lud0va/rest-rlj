@@ -47,13 +47,13 @@ public class RestLogin {
 
 
         Usuario usuario = serv.login(new Usuario(mail, passwrd));
-        request.getSession().setAttribute("usernow", usuario);
+
         if (usuario != null && usuario.isActivado()) {
             String accesToken = Jwts.builder()
                     .setSubject(usuario.getEmail())
                     .claim("role", usuario.getRol())
                     .setExpiration(Date
-                            .from(LocalDateTime.now().plusSeconds(60)
+                            .from(LocalDateTime.now().plusSeconds(180)
                                     .atZone(ZoneId.systemDefault()).toInstant()))
                     .signWith(key22.key())
                     .compact();
@@ -84,23 +84,23 @@ public class RestLogin {
         String codes = Utils.randomBytes();
 
         MandarMail mail = new MandarMail();
-   if (serv.register(new Usuario(email, password, codes))){
-       try {
-           mail.generateAndSendEmail(email, "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + " </a></html>", "mail de prueba");
-           response.getWriter().println("correo enviado");
-           return true;
-       } catch (Exception e) {
-           try {
-               response.getWriter().println(e.getMessage());
-           } catch (IOException ex) {
-               throw new RuntimeException(ex);
-           }
+        if (serv.register(new Usuario(email, password, codes))) {
+            try {
+                mail.generateAndSendEmail(email, "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + " </a></html>", "mail de prueba");
+                response.getWriter().println("correo enviado");
+                return true;
+            } catch (Exception e) {
+                try {
+                    response.getWriter().println(e.getMessage());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
 
-       }
-   }
+            }
+        }
 
 
-        return false ;
+        return false;
     }
 
     @GET
@@ -133,7 +133,7 @@ public class RestLogin {
                 .setSubject(claims.get("email").toString())
                 .claim("role", claims.get("role"))
                 .setExpiration(Date
-                        .from(LocalDateTime.now().plusSeconds(60)
+                        .from(LocalDateTime.now().plusSeconds(180)
                                 .atZone(ZoneId.systemDefault()).toInstant()))
                 .signWith(key22.key())
                 .compact();
@@ -143,24 +143,26 @@ public class RestLogin {
     @PUT
     @Path("/cambiarpassword")
     public Boolean cambiarPassword(@QueryParam("email") String email) {
-        request.getSession().setAttribute("email", email);
+        String codes = Utils.randomBytes();
 
+        if (serv.addCodAct(email, codes)) {
+            MandarMail mail = new MandarMail();
 
-        MandarMail mail = new MandarMail();
-        var correo = request.getSession().getAttribute("email");
-        var code = request.getSession().getAttribute("code");
-        try {
-            mail.generateAndSendEmail(correo.toString(), "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/newpassw"  + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/GetNewPassword" + " </a></html>", "cambiar contraseña");
-            response.getWriter().println("ve al correo para cambiar la contraseña");
-        } catch (Exception e) {
             try {
-                response.getWriter().println(e.getMessage());
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
+                mail.generateAndSendEmail(email, "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/newpassw?code="+codes + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/newpassw?code="+codes + " </a></html>", "cambiar contraseña");
+                response.getWriter().println("ve al correo para cambiar la contraseña");
+
+            } catch (Exception e) {
+                try {
+                    response.getWriter().println(e.getMessage());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
             }
-
-
         }
-        return true;
+
+        return false;
     }
 }

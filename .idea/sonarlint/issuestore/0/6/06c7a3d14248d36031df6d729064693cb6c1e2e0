@@ -1,13 +1,13 @@
 
 
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‹¨¯¿8Ûõ“ÿÎ1
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‹¨¯¿8¿‘¼¦Ï1
 d
-java:S6813"BRemove this field injection and use constructor injection instead.(Áº–üÿÿÿÿ8Ûõ“ÿÎ1
+java:S6813"BRemove this field injection and use constructor injection instead.(Áº–üÿÿÿÿ8À‘¼¦Ï1
 I
-java:S1948",Make "daoUsuario" transient or serializable.(ÌÀ¦ü8Üõ“ÿÎ1
+java:S1948",Make "daoUsuario" transient or serializable.(ÌÀ¦ü8À‘¼¦Ï1
 W
-java:S1161":Add the "@Override" annotation above this method signature(‹¨¯¿8İõ“ÿÎ1
+java:S1161":Add the "@Override" annotation above this method signature(‹¨¯¿8Â‘¼¦Ï1
 \
-java:S1161":Add the "@Override" annotation above this method signature(Ïû©Öûÿÿÿÿ8Şõ“ÿÎ1
+java:S1161":Add the "@Override" annotation above this method signature(Ïû©Öûÿÿÿÿ8Â‘¼¦Ï1
 P
-java:S1128".Remove this unused import 'server.MandarMail'.(‰›ïÓûÿÿÿÿ8°¾¥ÿÎ1
+java:S1128".Remove this unused import 'server.MandarMail'.(‰›ïÓûÿÿÿÿ8Å‘¼¦Ï1
