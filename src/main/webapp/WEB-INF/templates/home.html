@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Home</title>
+</head>
+<body>
+
+
+
+<form  method="get"th:action="@{cambiarpassw}"  >
+  <label for="password"  >Ingresa la contraseña:</label>
+  <input type="text" th:value="${password}" name="password" id="password" />
+  <button type="submit"  >Send</button>
+</form>
+<h th:text="${text}"></h>
+</body>
+</html>

@@ -1,16 +1,11 @@
 
 
-java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‹¨¯¿8İ¾¤åÊ1
-u
-java:S1450"SRemove the "mail" field and declare it as a local variable in the relevant methods.(¶ÊÆìüÿÿÿÿ8Ş¾¤åÊ1
+java:S1186"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(‹¨¯¿8İ¾¤åÊ1
 H
-java:S1948"&Make "mail" transient or serializable.(¶ÊÆìüÿÿÿÿ8Ş¾¤åÊ1
+java:S1948"&Make "mail" transient or serializable.(¶ÊÆìüÿÿÿÿ8Ş¾¤åÊ1
 W
-java:S1161":Add the "@Override" annotation above this method signature(‹¨¯¿8ß¾¤åÊ1
+java:S1161":Add the "@Override" annotation above this method signature(‹¨¯¿8ß¾¤åÊ1
 \
-java:S1161":Add the "@Override" annotation above this method signature(Ïû©Öûÿÿÿÿ8à¾¤åÊ1
-]	java:S125"<This block of commented-out lines of code should be removed.(Æ Ôûÿÿÿÿ8óÿ¿çÊ1
-T
-java:S1128"2Remove this unused import 'jakarta.inject.Inject'.(‘ø”şÿÿÿÿ8˜«åÊ1
-L
-java:S1128	"*Remove this unused import 'model.Usuario'.(¬îÕ£üÿÿÿÿ8˜«åÊ1
+java:S1161":Add the "@Override" annotation above this method signature(Ïû©Öûÿÿÿÿ8à¾¤åÊ1
+J
+java:S1068"(Remove this unused "mail" private field.(¶ÊÆìüÿÿÿÿ8¦ÂïùÎ1

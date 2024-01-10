@@ -1,13 +1,15 @@
 
+g	java:S112b"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ8ÔöıÎ1
+h	java:S112Ÿ"FDefine and throw a dedicated exception instead of using a generic one.(¼ÿ¾¹ÿÿÿÿÿ8ÔöıÎ1
+h
+java:S1192?"FDefine a constant instead of duplicating this literal "email" 7 times.(Æ‰êœùÿÿÿÿ8ÖöıÎ1
+€
+java:S1488„"bImmediately return this expression instead of assigning it to the temporary variable "accesToken".(š©è8×öıÎ1
 d
-java:S6813"BRemove this field injection and use constructor injection instead.(Áº–üÿÿÿÿ8¹Ê«Í1
-N
-java:S1128"1Remove this unused import 'io.jsonwebtoken.Jwts'.(íğœ±8²õÊ«Í1
-Y
-java:S1128"7Remove this unused import 'server.servlet.ServletMail'.(æ©øÕúÿÿÿÿ8²õÊ«Í1
-V
-java:S1128"4Remove this unused import 'java.time.LocalDateTime'.(æÃ§ƒüÿÿÿÿ8²õÊ«Í1
+java:S6813"BRemove this field injection and use constructor injection instead.(Áº–üÿÿÿÿ8ğöıÎ1
 J
-java:S1128"-Remove this unused import 'java.time.ZoneId'.( Æ½“8²õÊ«Í1
-H
-java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8²õÊ«Í1
+java:S2201ƒ"'The return value of "get" must be used.(ª»Âıÿÿÿÿ8‚öıÎ1
+V
+java:S1854—"8Remove this useless assignment to local variable "code".(Ã–šé8ØÿÓşÎ1
+G
+java:S1481—")Remove this unused "code" local variable.(Ã–šé8ÚÿÓşÎ1

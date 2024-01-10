@@ -37,9 +37,14 @@ public class DaoUsuarioImpl implements DaoUsuario {
     }
 
     @Override
-    public void cambiarPasswrd(String mail,String newpasswrd) {
-        StaticList.usuarios.stream().filter(usuario -> usuario.getEmail().equals(mail)).findFirst().orElse(null).setPassword(newpasswrd);
+    public Boolean cambiarPasswrd(String mail,String newpasswrd) {
+     Usuario user=  StaticList.usuarios.stream().filter(usuario -> usuario.getEmail().equals(mail)).findFirst().orElse(null);
 
+       if (user!=null){
+           StaticList.usuarios.stream().filter(usuario -> usuario.getEmail().equals(mail)).findFirst().orElse(null).setPassword(newpasswrd);
+           return true;
+       }
+       return false;
     }
 
     @Override
