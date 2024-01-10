@@ -82,25 +82,25 @@ public class RestLogin {
     @Path("/register")
     public Boolean doRegister(@QueryParam("email") String email, @QueryParam("password") String password) {
         String codes = Utils.randomBytes();
-        request.getSession().setAttribute("email", email);
-        request.getSession().setAttribute("code", codes);
 
         MandarMail mail = new MandarMail();
-        var correo = request.getSession().getAttribute("email");
-        var code = request.getSession().getAttribute("code");
-        try {
-            mail.generateAndSendEmail(correo.toString(), "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + code.toString() + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + code.toString() + " </a></html>", "mail de prueba");
-            response.getWriter().println("correo enviado");
-        } catch (Exception e) {
-            try {
-                response.getWriter().println(e.getMessage());
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
+   if (serv.register(new Usuario(email, password, codes))){
+       try {
+           mail.generateAndSendEmail(email, "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + " </a></html>", "mail de prueba");
+           response.getWriter().println("correo enviado");
+           return true;
+       } catch (Exception e) {
+           try {
+               response.getWriter().println(e.getMessage());
+           } catch (IOException ex) {
+               throw new RuntimeException(ex);
+           }
 
-        }
+       }
+   }
 
-        return serv.register(new Usuario(email, password, codes));
+
+        return false ;
     }
 
     @GET

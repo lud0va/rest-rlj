@@ -12,6 +12,8 @@ public interface DaoUsuario {
 
        Boolean verifyUser(Usuario usuario);
 
+       Boolean addCodeUser(String email, String code);
+
        Boolean cambiarPasswrd(String mail, String newpasswrd);
        List<Usuario> getAll();
 

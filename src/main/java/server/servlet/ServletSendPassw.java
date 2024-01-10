@@ -36,6 +36,8 @@ public class ServletSendPassw extends HttpServlet {
 
 
         var password =  request.getParameter("password");
+        var code =  request.getParameter("code");
+
 
      String email =request.getSession().getAttribute("email").toString();
 
