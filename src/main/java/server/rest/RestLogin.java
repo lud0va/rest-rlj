@@ -25,6 +25,7 @@ import java.util.Date;
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestLogin {
     private final ServiciosUsuario serv;
+    private final MandarMail mail;
     @Inject
     KeyProvider key22;
     @Context
@@ -37,8 +38,9 @@ public class RestLogin {
     private SecurityContext securityContext;
 
     @Inject
-    public RestLogin(ServiciosUsuario serv) {
+    public RestLogin(ServiciosUsuario serv, MandarMail mandarMail) {
         this.serv = serv;
+        this.mail = mandarMail;
     }
 
     @GET
@@ -83,7 +85,7 @@ public class RestLogin {
     public Boolean doRegister(@QueryParam("email") String email, @QueryParam("password") String password) {
         String codes = Utils.randomBytes();
 
-        MandarMail mail = new MandarMail();
+
         if (serv.register(new Usuario(email, password, codes))) {
             try {
                 mail.generateAndSendEmail(email, "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + " </a></html>", "mail de prueba");
@@ -146,7 +148,7 @@ public class RestLogin {
         String codes = Utils.randomBytes();
 
         if (serv.addCodAct(email, codes)) {
-            MandarMail mail = new MandarMail();
+
 
             try {
                 mail.generateAndSendEmail(email, "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/newpassw?code="+codes + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/newpassw?code="+codes + " </a></html>", "cambiar contraseña");

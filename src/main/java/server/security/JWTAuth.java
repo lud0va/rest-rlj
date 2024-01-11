@@ -60,10 +60,11 @@ public class JWTAuth implements HttpAuthenticationMechanism {
                     String role = (String) claims.get("role");
 
                     if (role.equals("admin") || role.equals("usuario")) {
-                        request.getSession().setAttribute("USERLOGIN", new CredentialValidationResult(subject, Collections.singleton(role)));
+                     c= new CredentialValidationResult(subject, Collections.singleton(role));
 
 
                     }
+
 
                 } catch (JwtException e) {
 
@@ -71,18 +72,14 @@ public class JWTAuth implements HttpAuthenticationMechanism {
                 }
             }
 
-        } else {
-            if (request.getSession().getAttribute("USERLOGIN") != null)
-                c = (CredentialValidationResult) request.getSession().getAttribute("USERLOGIN");
-        }
+            return httpMessageContext.notifyContainerAboutLogin(c);
 
-        if (!c.getStatus().equals(CredentialValidationResult.Status.VALID)) {
-            request.setAttribute("status", c.getStatus());
+        } else {
             return httpMessageContext.doNothing();
         }
 
 
-        return httpMessageContext.notifyContainerAboutLogin(c);
+
     }
 
 

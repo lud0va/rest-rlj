@@ -14,10 +14,14 @@ import java.util.Properties;
 
 
 @Log4j2
-
 public class MandarMail {
 
     private Configuration config;
+
+    @Inject
+    public MandarMail(Configuration config) {
+        this.config = config;
+    }
 
 
     public void generateAndSendEmail(String to, String msg, String subject) throws MessagingException {
@@ -46,13 +50,9 @@ public class MandarMail {
         Transport transport = getMailSession.getTransport("smtp");
 
 
-      /*  transport.connect(config.getProperty("host"),
-                config.getProperty("user"),
-                config.getProperty("password"));*/
-
-        transport.connect("smtp.gmail.com",
-                "alumnosdamquevedo@gmail.com",
-                "uyhqfbbfmszvuykt");
+        transport.connect(config.getHost(),
+                config.getUser(),
+                config.getPassword());
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
     }

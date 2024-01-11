@@ -1,5 +1,6 @@
 package server.rest;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
@@ -21,12 +22,14 @@ public class RestJugadores {
     }
 
     @GET
+
     public List<Jugadores> getAll(){
         return serv.getAll();
 
     }
 
     @DELETE
+    @RolesAllowed({"admin"})
     public Response deleteJugador(@QueryParam("id")int id){
         if (serv.deleteJugador(id)){
             return Response.status(Response.Status.NO_CONTENT).build();
@@ -36,6 +39,7 @@ public class RestJugadores {
     }
 
     @POST
+    @RolesAllowed({"admin"})
     public Response addJugador(Jugadores jugadores){
         if (serv.addJugador(jugadores)){
             return Response.status(Response.Status.NO_CONTENT).build();
@@ -44,6 +48,7 @@ public class RestJugadores {
         }
     }
     @PUT
+    @RolesAllowed({"admin"})
     public Response updateJugador(Jugadores jugadores){
         if (serv.updateJugador(jugadores)){
             return Response.status(Response.Status.NO_CONTENT).build();

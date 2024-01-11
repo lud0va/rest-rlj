@@ -11,26 +11,25 @@ import java.util.Properties;
 @Getter
 public class Configuration {
 
-    private static final Configuration instance = new Configuration(); // Crear una instancia
-    private final Properties p;
 
-    private Configuration() {
+    private String host;
+    private String user;
+    private String password;
+
+
+    public Configuration() {
         try {
-            p = new Properties();
+            Properties p = new Properties();
             p.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/correoinfo.xml"));
+            this.host = p.getProperty("host");
+            this.user = p.getProperty("user");
+            this.password = p.getProperty("password");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
 
-    public static Configuration getInstance() {
-        return instance;
-    }
-
-    public String getProperty(String key) {
-        return p.getProperty(key);
-    }
 }
 
 

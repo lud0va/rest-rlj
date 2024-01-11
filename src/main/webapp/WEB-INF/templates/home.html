@@ -7,8 +7,9 @@
 
 
 <form  method="get"th:action="@{cambiarpassw}"  >
+  <input type="hidden" th:value="${code}" name="code" />
   <label for="password"  >Ingresa la contraseña:</label>
-  <input type="text" th:value="${password}" name="password" id="password" />
+  <input type="text"  name="password" id="password" />
   <button type="submit"  >Send</button>
 </form>
 <h th:text="${text}"></h>

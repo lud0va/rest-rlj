@@ -51,7 +51,7 @@ public class DaoUsuarioImpl implements DaoUsuario {
      Usuario user=  StaticList.usuarios.stream().filter(usuario -> usuario.getCodAct().equals(code)).findFirst().orElse(null);
 
        if (user!=null){
-           StaticList.usuarios.stream().filter(usuario -> usuario.getEmail().equals(code)).findFirst().orElse(null).setPassword(newpasswrd);
+           StaticList.usuarios.stream().filter(usuario -> usuario.getCodAct().equals(code)).findFirst().orElse(null).setPassword(newpasswrd);
            return true;
        }
        return false;

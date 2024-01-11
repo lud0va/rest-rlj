@@ -23,13 +23,14 @@ public class RestJuegos {
     }
 
     @GET
-    @RolesAllowed({"admin","usuario"})
+
     public List<Juegos> getAll(){
         return serv.getAll();
 
     }
 
     @POST
+    @RolesAllowed({"admin"})
     public Response addGame(Juegos juegos){
         if (serv.addGame(juegos))
             return Response.status(Response.Status.ACCEPTED).build();
@@ -39,6 +40,7 @@ public class RestJuegos {
 
 
     @DELETE
+    @RolesAllowed({"admin"})
     public Response deleteGame(@QueryParam("id") int id){
         if (serv.deleteGame(id)){
             return Response.status(Response.Status.NO_CONTENT).build();
@@ -49,17 +51,20 @@ public class RestJuegos {
     }
     @GET
     @Path("/porjugador")
+    @RolesAllowed({"admin"})
     public List<Juegos> getGamesPorJugador(@QueryParam("idjugador") int id){
         return serv.getGamesPorJugador(id);
     }
 
     @GET
     @Path("/porjuego")
+
     public Juegos getJuego(@QueryParam("id" )int id){
         return serv.getJuego(id);
     }
 
     @PUT
+    @RolesAllowed({"admin"})
     public Response updateGame(Juegos juegos){
         if (serv.update(juegos)){
             return Response.status(Response.Status.NO_CONTENT).build();
