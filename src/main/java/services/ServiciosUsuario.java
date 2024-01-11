@@ -39,4 +39,9 @@ public class ServiciosUsuario {
     public Boolean cambiarContraseña(String email,String passw){
         return daoUsuario.cambiarPasswrd(email,passw);
     }
+
+    public Boolean addCodAct(String email,String code){
+        return daoUsuario.addCodeUser(email,code);
+
+    }
 }

@@ -1,0 +1,6 @@
+
+g	java:S112!"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8åµ¸ˆÍ1
+ƒ
+java:S1488"aImmediately return this expression instead of assigning it to the temporary variable "keyConfig".(ŸÄÀÕýÿÿÿÿ8æµ¸ˆÍ1
+[
+java:S1128"?Remove this unused import 'io.jsonwebtoken.SignatureAlgorithm'.(ç±«g8òµ¸ˆÍ1

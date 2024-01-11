@@ -37,6 +37,8 @@ public class ServletPasswrd extends HttpServlet {
         String template = "home";
 
 
+        String code=request.getParameter("code");
+        request.setAttribute("code",code);
         templateEngine.process(template, context, response.getWriter());
 
 

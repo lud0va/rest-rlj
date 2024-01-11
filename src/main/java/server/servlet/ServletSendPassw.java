@@ -36,12 +36,12 @@ public class ServletSendPassw extends HttpServlet {
 
 
         var password =  request.getParameter("password");
-        var code =  request.getParameter("code");
+
+        String c= (String) request.getAttribute("code");
 
 
-     String email =request.getSession().getAttribute("email").toString();
 
-        if (daoUsuario.cambiarPasswrd(email, password.toString())) {
+        if (daoUsuario.cambiarPasswrd(c, password.toString())) {
             context.setVariable("text", "contraseña cambiada correctamente");
         }
 

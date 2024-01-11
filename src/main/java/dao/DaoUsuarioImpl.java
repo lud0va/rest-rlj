@@ -39,7 +39,7 @@ public class DaoUsuarioImpl implements DaoUsuario {
     @Override
     public Boolean addCodeUser(String email, String code) {
        Usuario user= StaticList.usuarios.stream().filter(usuario -> usuario.getEmail().equals(email)).findFirst().orElse(null);
-        if ( user == null) {
+        if ( user != null) {
             StaticList.usuarios.stream().filter(usuario -> usuario.getEmail().equals(email)).findFirst().orElse(null).setCodAct(code);
             return true;
         }
@@ -47,11 +47,11 @@ public class DaoUsuarioImpl implements DaoUsuario {
     }
 
     @Override
-    public Boolean cambiarPasswrd(String mail,String newpasswrd) {
-     Usuario user=  StaticList.usuarios.stream().filter(usuario -> usuario.getEmail().equals(mail)).findFirst().orElse(null);
+    public Boolean cambiarPasswrd(String code,String newpasswrd) {
+     Usuario user=  StaticList.usuarios.stream().filter(usuario -> usuario.getCodAct().equals(code)).findFirst().orElse(null);
 
        if (user!=null){
-           StaticList.usuarios.stream().filter(usuario -> usuario.getEmail().equals(mail)).findFirst().orElse(null).setPassword(newpasswrd);
+           StaticList.usuarios.stream().filter(usuario -> usuario.getEmail().equals(code)).findFirst().orElse(null).setPassword(newpasswrd);
            return true;
        }
        return false;
