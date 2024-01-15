@@ -1,6 +1,7 @@
 package server.listeners;
 
 
+import common.ConstantsServer;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
 import jakarta.servlet.annotation.WebListener;
@@ -15,10 +16,9 @@ import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 @WebListener
 public class ThymeLeafListener implements ServletContextListener {
 
-    public static final String TEMPLATE_ENGINE_ATTR = "thymeleaf.TemplateEngineInstance";
+    public static final String TEMPLATE_ENGINE_ATTR = ConstantsServer.THYMELEAF_TEMPLATE_ENGINE_INSTANCE;
 
-    public ThymeLeafListener() {
-    }
+
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -42,8 +42,8 @@ public class ThymeLeafListener implements ServletContextListener {
         WebApplicationTemplateResolver templateResolver = new WebApplicationTemplateResolver(application);
 
         templateResolver.setTemplateMode(TemplateMode.HTML);
-        templateResolver.setPrefix("/WEB-INF/templates/");
-        templateResolver.setSuffix(".html");
+        templateResolver.setPrefix(ConstantsServer.WEB_INF_TEMPLATES);
+        templateResolver.setSuffix(ConstantsServer.HTML);
         templateResolver.setCacheTTLMs(3600000L);
 
         templateResolver.setCacheable(true);

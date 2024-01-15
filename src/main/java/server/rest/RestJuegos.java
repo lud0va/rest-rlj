@@ -1,5 +1,6 @@
 package server.rest;
 
+import common.ConstantsServer;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -10,7 +11,7 @@ import services.ServiciosJuegos;
 
 import java.util.List;
 
-@Path("/juegos")
+@Path(ConstantsServer.JUEGOSPATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestJuegos {
@@ -30,7 +31,7 @@ public class RestJuegos {
     }
 
     @POST
-    @RolesAllowed({"admin"})
+    @RolesAllowed({ConstantsServer.ADMIN})
     public Response addGame(Juegos juegos){
         if (serv.addGame(juegos))
             return Response.status(Response.Status.ACCEPTED).build();
@@ -40,8 +41,8 @@ public class RestJuegos {
 
 
     @DELETE
-    @RolesAllowed({"admin"})
-    public Response deleteGame(@QueryParam("id") int id){
+    @RolesAllowed({ConstantsServer.ADMIN})
+    public Response deleteGame(@QueryParam(ConstantsServer.ID) int id){
         if (serv.deleteGame(id)){
             return Response.status(Response.Status.NO_CONTENT).build();
         }
@@ -50,21 +51,21 @@ public class RestJuegos {
         }
     }
     @GET
-    @Path("/porjugador")
-    @RolesAllowed({"admin"})
-    public List<Juegos> getGamesPorJugador(@QueryParam("idjugador") int id){
+    @Path(ConstantsServer.PORJUGADOR)
+    @RolesAllowed({ConstantsServer.ADMIN})
+    public List<Juegos> getGamesPorJugador(@QueryParam(ConstantsServer.IDJUGADOR) int id){
         return serv.getGamesPorJugador(id);
     }
 
     @GET
-    @Path("/porjuego")
+    @Path(ConstantsServer.PORJUEGO)
 
-    public Juegos getJuego(@QueryParam("id" )int id){
+    public Juegos getJuego(@QueryParam(ConstantsServer.ID)int id){
         return serv.getJuego(id);
     }
 
     @PUT
-    @RolesAllowed({"admin"})
+    @RolesAllowed({ConstantsServer.ADMIN})
     public Response updateGame(Juegos juegos){
         if (serv.update(juegos)){
             return Response.status(Response.Status.NO_CONTENT).build();

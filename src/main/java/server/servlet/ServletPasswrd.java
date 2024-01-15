@@ -1,5 +1,6 @@
 package server.servlet;
 
+import common.ConstantsServer;
 import dao.DaoUsuarioImpl;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
@@ -11,22 +12,24 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 import org.thymeleaf.web.IWebExchange;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
-import server.MandarMail;
 import server.listeners.ThymeLeafListener;
 
 import java.io.IOException;
 
-@WebServlet(name = "ServletRecuperarPasswrd", urlPatterns = {"/newpassw"})
+@WebServlet(name = ConstantsServer.RECUPERAR_PASSWRD, urlPatterns = {ConstantsServer.NEWPASSWPATH})
 public class ServletPasswrd extends HttpServlet {
 
+
+    private final DaoUsuarioImpl daoUsuario;
     @Inject
-    private DaoUsuarioImpl daoUsuario;
-
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    public ServletPasswrd(DaoUsuarioImpl daoUsuario) {
+        this.daoUsuario = daoUsuario;
     }
 
+
+
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         TemplateEngine templateEngine = (TemplateEngine) getServletContext().getAttribute(
@@ -34,11 +37,11 @@ public class ServletPasswrd extends HttpServlet {
         IWebExchange webExchange = JakartaServletWebApplication.buildApplication(getServletContext())
                 .buildExchange(request, response);
         WebContext context = new WebContext(webExchange);
-        String template = "home";
+        String template = ConstantsServer.HOME;
 
 
-        String code=request.getParameter("code");
-        context.setVariable("code",code);
+        String code=request.getParameter(ConstantsServer.CODE);
+        context.setVariable(ConstantsServer.CODE,code);
         templateEngine.process(template, context, response.getWriter());
 
 

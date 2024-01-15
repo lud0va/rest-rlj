@@ -2,6 +2,7 @@ package server.security;
 
 
 
+import common.ConstantsServer;
 import jakarta.inject.Inject;
 import jakarta.security.enterprise.credential.BasicAuthenticationCredential;
 import jakarta.security.enterprise.credential.Credential;
@@ -43,8 +44,8 @@ public class InMemoryIdentityStore implements IdentityStore {
         if (credential instanceof BasicAuthenticationCredential user) {
 
                 HashSet<String> roles = new HashSet<>();
-                roles.add("admin");
-                roles.add("user");
+                roles.add(ConstantsServer.ADMIN);
+                roles.add(ConstantsServer.USUARIO);
             List<Usuario> users=serviciosUsuarios.getAll();
                 user.getPassword().getValue();
 
@@ -61,7 +62,7 @@ public class InMemoryIdentityStore implements IdentityStore {
                 jwt.getToken();
 
             }
-        else { throw new IllegalStateException("Unexpected value: " + credential);
+        else { throw new IllegalStateException(ConstantsServer.UNEXPECTED_VALUE + credential);
         }
 
 

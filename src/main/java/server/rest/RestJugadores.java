@@ -1,5 +1,6 @@
 package server.rest;
 
+import common.ConstantsServer;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
@@ -10,7 +11,7 @@ import services.ServiciosJugadores;
 
 import java.util.List;
 
-@Path("/jugadores")
+@Path(ConstantsServer.JUGADORES)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestJugadores {
@@ -29,9 +30,9 @@ public class RestJugadores {
     }
 
     @DELETE
-    @RolesAllowed({"admin"})
-    public Response deleteJugador(@QueryParam("id")int id){
-        if (serv.deleteJugador(id)){
+    @RolesAllowed({ConstantsServer.ADMIN})
+    public Response deleteJugador(@QueryParam(ConstantsServer.ID)int id){
+        if (Boolean.TRUE.equals(serv.deleteJugador(id))){
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -39,18 +40,18 @@ public class RestJugadores {
     }
 
     @POST
-    @RolesAllowed({"admin"})
+    @RolesAllowed({ConstantsServer.ADMIN})
     public Response addJugador(Jugadores jugadores){
-        if (serv.addJugador(jugadores)){
+        if (Boolean.TRUE.equals(serv.addJugador(jugadores))){
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
             return Response.status(Response.Status.NOT_ACCEPTABLE).build();
         }
     }
     @PUT
-    @RolesAllowed({"admin"})
+    @RolesAllowed({ConstantsServer.ADMIN})
     public Response updateJugador(Jugadores jugadores){
-        if (serv.updateJugador(jugadores)){
+        if (Boolean.TRUE.equals(serv.updateJugador(jugadores))){
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
             return Response.status(Response.Status.NOT_ACCEPTABLE).build();

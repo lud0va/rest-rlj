@@ -1,14 +1,12 @@
 
-g	java:S112F"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8¼·Õ¬Í1
-l
-java:S1192?"JDefine a constant instead of duplicating this literal "USERLOGIN" 4 times.(¡£¬øÿÿÿÿ8½·Õ¬Í1
+g	java:S112H"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8°âº¥Ğ1
 d
-java:S6813 "BRemove this field injection and use constructor injection instead.(Áº–üÿÿÿÿ8É·Õ¬Í1
+java:S6813!"BRemove this field injection and use constructor injection instead.(Áº–üÿÿÿÿ8É·Õ¬Í1
 d
-java:S6813""BRemove this field injection and use constructor injection instead.(Áº–üÿÿÿÿ8É·Õ¬Í1
+java:S6813#"BRemove this field injection and use constructor injection instead.(Áº–üÿÿÿÿ8É·Õ¬Í1
 M
-java:S1128"0Remove this unused import 'io.jsonwebtoken.Jws'.(şœüê8Âğİ¬Í1
+java:S1128"0Remove this unused import 'io.jsonwebtoken.Jws'.(şœüê8¡àÁÄĞ1
 ~
-java:S1128"aRemove this unused import 'jakarta.security.enterprise.credential.BasicAuthenticationCredential'.(ÁøËØ8Âğİ¬Í1
+java:S1128"aRemove this unused import 'jakarta.security.enterprise.credential.BasicAuthenticationCredential'.(ÁøËØ8¢àÁÄĞ1
 ^
-java:S1128"ARemove this unused import 'jakarta.servlet.annotation.WebFilter'.(‘ªèà8Âğİ¬Í1
+java:S1128"ARemove this unused import 'jakarta.servlet.annotation.WebFilter'.(‘ªèà8¢àÁÄĞ1

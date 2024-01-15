@@ -1,6 +1,5 @@
 package services;
 
-import dao.DaoUsuario;
 import dao.DaoUsuarioImpl;
 import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
@@ -36,7 +35,7 @@ public class ServiciosUsuario {
 
     public List<Usuario> getAll(){return daoUsuario.getAll();}
 
-    public Boolean cambiarContraseña(String email,String passw){
+    public Boolean cambiarPasswrd(String email, String passw){
         return daoUsuario.cambiarPasswrd(email,passw);
     }
 

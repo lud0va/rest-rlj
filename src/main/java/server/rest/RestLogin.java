@@ -1,5 +1,6 @@
 package server.rest;
 
+import common.ConstantsServer;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import jakarta.inject.Inject;
@@ -20,14 +21,14 @@ import java.time.ZoneId;
 import java.util.Date;
 
 
-@Path("/user")
+@Path(ConstantsServer.USERPATH)
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestLogin {
     private final ServiciosUsuario serv;
     private final MandarMail mail;
-    @Inject
-    KeyProvider key22;
+
+    final KeyProvider key22;
     @Context
     private HttpServletRequest request;
 
@@ -38,14 +39,15 @@ public class RestLogin {
     private SecurityContext securityContext;
 
     @Inject
-    public RestLogin(ServiciosUsuario serv, MandarMail mandarMail) {
+    public RestLogin(ServiciosUsuario serv, MandarMail mandarMail, KeyProvider key22) {
         this.serv = serv;
         this.mail = mandarMail;
+        this.key22 = key22;
     }
 
     @GET
-    @Path("/login")
-    public Response getLogin(@QueryParam("mail") String mail, @QueryParam("password") String passwrd) {
+    @Path(ConstantsServer.LOGINPATH)
+    public Response getLogin(@QueryParam(ConstantsServer.MAIL) String mail, @QueryParam(ConstantsServer.PASSWORD) String passwrd) {
 
 
         Usuario usuario = serv.login(new Usuario(mail, passwrd));
@@ -53,7 +55,7 @@ public class RestLogin {
         if (usuario != null && usuario.isActivado()) {
             String accesToken = Jwts.builder()
                     .setSubject(usuario.getEmail())
-                    .claim("role", usuario.getRol())
+                    .claim(ConstantsServer.ROLE, usuario.getRol())
                     .setExpiration(Date
                             .from(LocalDateTime.now().plusSeconds(180)
                                     .atZone(ZoneId.systemDefault()).toInstant()))
@@ -61,8 +63,8 @@ public class RestLogin {
                     .compact();
             String refreshToken = Jwts.builder()
                     .setSubject(usuario.getEmail())
-                    .claim("role", usuario.getRol())
-                    .claim("email", usuario.getEmail())
+                    .claim(ConstantsServer.ROLE, usuario.getRol())
+                    .claim(ConstantsServer.EMAIL, usuario.getEmail())
                     .setExpiration(Date.from(LocalDateTime.now().plusMinutes(10)
                             .atZone(ZoneId.systemDefault()).toInstant()))
                     .signWith(key22.key())
@@ -71,7 +73,7 @@ public class RestLogin {
 
             return Response.status(Response.Status.ACCEPTED)
                     .header(HttpHeaders.AUTHORIZATION, accesToken)
-                    .header("refresh", refreshToken).build();
+                    .header(ConstantsServer.REFRESH, refreshToken).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
@@ -81,15 +83,15 @@ public class RestLogin {
 
 
     @POST
-    @Path("/register")
-    public Boolean doRegister(@QueryParam("email") String email, @QueryParam("password") String password) {
+    @Path(ConstantsServer.REGISTER)
+    public Boolean doRegister(@QueryParam(ConstantsServer.EMAIL) String email, @QueryParam(ConstantsServer.PASSWORD) String password) {
         String codes = Utils.randomBytes();
 
 
         if (serv.register(new Usuario(email, password, codes))) {
             try {
-                mail.generateAndSendEmail(email, "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/user/verify?code=" + codes + " </a></html>", "mail de prueba");
-                response.getWriter().println("correo enviado");
+                mail.generateAndSendEmail(email, ConstantsServer.VERIFY_CODE_PATH + codes + ConstantsServer.VERIFY_CODE + codes + ConstantsServer.A_HTML, ConstantsServer.ACTIVAR_CUENTA);
+                response.getWriter().println(ConstantsServer.CORREO_ENVIADO);
                 return true;
             } catch (Exception e) {
                 try {
@@ -106,34 +108,34 @@ public class RestLogin {
     }
 
     @GET
-    @Path("/verify")
+    @Path(ConstantsServer.VERIFY)
     @Produces(MediaType.TEXT_HTML)
-    public Response verify(@QueryParam("code") String code) {
+    public Response verify(@QueryParam(ConstantsServer.CODE) String code) {
 
         boolean verificationResult = serv.verify(new Usuario(code));
 
         // Customize HTML content based on the verification result
-        String htmlResponse = verificationResult ? "<html><body><h1>Verification Successful</h1></body></html>"
-                : "<html><body><h1>Verification Failed</h1></body></html>";
+        String htmlResponse = verificationResult ? ConstantsServer.BODY_HTML
+                : ConstantsServer.HTML_BODY_H_1_VERIFICATION_FAILED_H_1_BODY_HTML;
 
         // Build and return the response
         return Response.ok(htmlResponse).build();
     }
 
     @GET
-    @Path("/getRefreshToken")
+    @Path(ConstantsServer.GET_REFRESH_TOKEN)
     public String getNewAccessToken() {
 
-        String header = request.getHeader("refresh");
+        String header = request.getHeader(ConstantsServer.REFRESH);
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key22.key())
                 .build()
                 .parseClaimsJws(header)
                 .getBody();
-        claims.get("email");
+        claims.get(ConstantsServer.EMAIL);
         String accesToken = Jwts.builder()
-                .setSubject(claims.get("email").toString())
-                .claim("role", claims.get("role"))
+                .setSubject(claims.get(ConstantsServer.EMAIL).toString())
+                .claim(ConstantsServer.ROLE, claims.get(ConstantsServer.ROLE))
                 .setExpiration(Date
                         .from(LocalDateTime.now().plusSeconds(180)
                                 .atZone(ZoneId.systemDefault()).toInstant()))
@@ -143,16 +145,16 @@ public class RestLogin {
     }
 
     @PUT
-    @Path("/cambiarpassword")
-    public Boolean cambiarPassword(@QueryParam("email") String email) {
+    @Path(ConstantsServer.CAMBIARPASSWORD)
+    public Boolean cambiarPassword(@QueryParam(ConstantsServer.EMAIL) String email) {
         String codes = Utils.randomBytes();
 
         if (serv.addCodAct(email, codes)) {
 
 
             try {
-                mail.generateAndSendEmail(email, "<html>generado <a href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/newpassw?code="+codes + "'>href='http://localhost:8080/rest-rlj-1.0-SNAPSHOT/api/newpassw?code="+codes + " </a></html>", "cambiar contraseña");
-                response.getWriter().println("ve al correo para cambiar la contraseña");
+                mail.generateAndSendEmail(email, ConstantsServer.NEWPASSW_CODE +codes + ConstantsServer.API_NEWPASSW_CODE +codes + ConstantsServer.A_HTML, ConstantsServer.CAMBIAR_PASSWORD);
+                response.getWriter().println(ConstantsServer.CAMBIAR_LA_PASSWORD);
 
             } catch (Exception e) {
                 try {

@@ -1,6 +1,6 @@
 package server.servlet;
 
-import dao.DaoUsuarioImpl;
+import common.ConstantsServer;
 import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -12,21 +12,26 @@ import org.thymeleaf.context.WebContext;
 import org.thymeleaf.web.IWebExchange;
 import org.thymeleaf.web.servlet.JakartaServletWebApplication;
 import server.listeners.ThymeLeafListener;
+import services.ServiciosUsuario;
 
 import java.io.IOException;
 
-@WebServlet(name = "cambiarpassw", urlPatterns = {"/cambiarpassw"})
+@WebServlet(name = ConstantsServer.CAMBIARPASSW, urlPatterns = {ConstantsServer.CAMBIARPASSWPATH})
 public class ServletSendPassw extends HttpServlet {
 
 
+
+    private final ServiciosUsuario serviciosUsuario;
+
     @Inject
-    private DaoUsuarioImpl daoUsuario;
-
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    public ServletSendPassw(ServiciosUsuario serviciosUsuario) {
+        this.serviciosUsuario = serviciosUsuario;
     }
 
+
+
+
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         TemplateEngine templateEngine = (TemplateEngine) getServletContext().getAttribute(
                 ThymeLeafListener.TEMPLATE_ENGINE_ATTR);
@@ -35,18 +40,18 @@ public class ServletSendPassw extends HttpServlet {
         WebContext context = new WebContext(webExchange);
 
 
-        var password =  request.getParameter("password");
+        var password =  request.getParameter(ConstantsServer.PASSWORD);
 
-        String c= (String) request.getParameter("code");
+        String c= (String) request.getParameter(ConstantsServer.CODE);
 
 
 
-        if (daoUsuario.cambiarPasswrd(c, password.toString())) {
-            context.setVariable("text", "contraseña cambiada correctamente");
+        if (Boolean.TRUE.equals(serviciosUsuario.cambiarPasswrd(c, password.toString()))) {
+            context.setVariable(ConstantsServer.TEXT, ConstantsServer.CAMBIADA_CORRECTAMENTE);
         }
 
 
-        templateEngine.process("home", context, response.getWriter());
+        templateEngine.process(ConstantsServer.HOME, context, response.getWriter());
     }
 
 }

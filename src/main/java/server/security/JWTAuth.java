@@ -1,5 +1,6 @@
 package server.security;
 
+import common.ConstantsServer;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
@@ -45,9 +46,9 @@ public class JWTAuth implements HttpAuthenticationMechanism {
 
         if (header != null) {
 
-            String[] valores = header.split(" ");
+            String[] valores = header.split(ConstantsServer.SPACE);
 
-            if (valores[0].equalsIgnoreCase("Bearer")) {
+            if (valores[0].equalsIgnoreCase(ConstantsServer.BEARER)) {
                 String token = header.substring(7);
                 try {
                     Claims claims = Jwts.parserBuilder()
@@ -57,9 +58,9 @@ public class JWTAuth implements HttpAuthenticationMechanism {
                             .getBody();
 
                     String subject = claims.getSubject();
-                    String role = (String) claims.get("role");
+                    String role = (String) claims.get(ConstantsServer.ROLE);
 
-                    if (role.equals("admin") || role.equals("usuario")) {
+                    if (role.equals(ConstantsServer.ADMIN) || role.equals(ConstantsServer.USUARIO)) {
                      c= new CredentialValidationResult(subject, Collections.singleton(role));
 
 
@@ -85,6 +86,6 @@ public class JWTAuth implements HttpAuthenticationMechanism {
 
     @Override
     public void cleanSubject(HttpServletRequest request, HttpServletResponse response, HttpMessageContext httpMessageContext) {
-        request.getSession().removeAttribute("USERLOGIN");
+        request.getSession().removeAttribute(ConstantsServer.USERLOGIN);
     }
 }

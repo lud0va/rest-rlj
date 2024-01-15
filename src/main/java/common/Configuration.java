@@ -1,4 +1,4 @@
-package server.common;
+package common;
 
 
 import jakarta.inject.Singleton;

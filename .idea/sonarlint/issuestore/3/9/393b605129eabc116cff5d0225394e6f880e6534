@@ -1,6 +1,7 @@
 
-g	java:S112!"FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8åµ¸ˆÍ1
-ƒ
-java:S1488"aImmediately return this expression instead of assigning it to the temporary variable "keyConfig".(ŸÄÀÕıÿÿÿÿ8æµ¸ˆÍ1
+g	java:S112""FDefine and throw a dedicated exception instead of using a generic one.(Ò‚Òéüÿÿÿÿ8ñõı¤Ğ1
 [
-java:S1128"?Remove this unused import 'io.jsonwebtoken.SignatureAlgorithm'.(ç±«g8òµ¸ˆÍ1
+java:S1128"?Remove this unused import 'io.jsonwebtoken.SignatureAlgorithm'.(ç±«g8—¾ÓĞ1
+P
+java:S1128
+"3Remove this unused import 'javax.crypto.SecretKey'.(±•¸×8—¾ÓĞ1
