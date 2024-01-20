@@ -42,11 +42,11 @@ public class ServletSendPassw extends HttpServlet {
 
         var password =  request.getParameter(ConstantsServer.PASSWORD);
 
-        String c= (String) request.getParameter(ConstantsServer.CODE);
+        String c= request.getParameter(ConstantsServer.CODE);
 
 
 
-        if (Boolean.TRUE.equals(serviciosUsuario.cambiarPasswrd(c, password.toString()))) {
+        if (Boolean.TRUE.equals(serviciosUsuario.cambiarPasswrd(c, password))) {
             context.setVariable(ConstantsServer.TEXT, ConstantsServer.CAMBIADA_CORRECTAMENTE);
         }
 

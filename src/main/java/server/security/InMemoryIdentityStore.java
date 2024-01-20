@@ -15,7 +15,7 @@ import services.ServiciosUsuario;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 
 import static jakarta.security.enterprise.identitystore.CredentialValidationResult.INVALID_RESULT;
 import static jakarta.security.enterprise.identitystore.CredentialValidationResult.NOT_VALIDATED_RESULT;
@@ -51,7 +51,8 @@ public class InMemoryIdentityStore implements IdentityStore {
 
              Usuario usuari= users.stream().filter(u->u.getEmail().equals(user.getCaller())).findFirst().orElse(null);
 
-             if (usuari.isActivado()){
+            assert usuari != null;
+            if (usuari.isActivado()){
                  return new CredentialValidationResult(usuari.getEmail(),Collections.singleton(usuari.getRol()));
              }else {
              return NOT_VALIDATED_RESULT;

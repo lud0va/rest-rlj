@@ -1,5 +1,6 @@
 package model;
 
+import common.ConstantsServer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,14 +21,14 @@ public class Usuario {
     boolean activado;
 
     public Usuario(String email, String password) {
-        rol="usuario";
+        rol= ConstantsServer.USER;
         this.email = email;
         this.password = password;
         minutoAct=LocalDateTime.now();
     }
 
     public Usuario(String email, String password ,String codAct) {
-        rol="usuario";
+        rol= ConstantsServer.USER;
         this.email = email;
         this.password = password;
         this.codAct = codAct;
@@ -35,7 +36,7 @@ public class Usuario {
     }
 
     public Usuario(String code) {
-        rol="usuario";
+        rol= ConstantsServer.USER;
         this.codAct = code;
         minutoAct=LocalDateTime.now();
     }

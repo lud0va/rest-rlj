@@ -84,27 +84,27 @@ public class RestLogin {
 
     @POST
     @Path(ConstantsServer.REGISTER)
-    public Boolean doRegister(@QueryParam(ConstantsServer.EMAIL) String email, @QueryParam(ConstantsServer.PASSWORD) String password) {
+    public Response doRegister(@QueryParam(ConstantsServer.EMAIL) String email, @QueryParam(ConstantsServer.PASSWORD) String password) {
         String codes = Utils.randomBytes();
 
 
-        if (serv.register(new Usuario(email, password, codes))) {
+        if (Boolean.TRUE.equals(serv.register(new Usuario(email, password, codes)))) {
             try {
-                mail.generateAndSendEmail(email, ConstantsServer.VERIFY_CODE_PATH + codes + ConstantsServer.VERIFY_CODE + codes + ConstantsServer.A_HTML, ConstantsServer.ACTIVAR_CUENTA);
-                response.getWriter().println(ConstantsServer.CORREO_ENVIADO);
-                return true;
+                serv.enviarCorreoCod(mail,codes,email);
+               response.getWriter().println(ConstantsServer.CORREO_ENVIADO);
+                return Response.status(Response.Status.ACCEPTED).build();
             } catch (Exception e) {
                 try {
                     response.getWriter().println(e.getMessage());
                 } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                    throw new IllegalArgumentException(ex);
                 }
 
             }
         }
 
 
-        return false;
+        return Response.status(Response.Status.NOT_ACCEPTABLE).build();
     }
 
     @GET
@@ -124,16 +124,18 @@ public class RestLogin {
 
     @GET
     @Path(ConstantsServer.GET_REFRESH_TOKEN)
-    public String getNewAccessToken() {
+    public String getNewAccessToken(@QueryParam("refreshtoken") String refresh) {
 
-        String header = request.getHeader(ConstantsServer.REFRESH);
+
+        String header = refresh;
         Claims claims = Jwts.parserBuilder()
                 .setSigningKey(key22.key())
                 .build()
                 .parseClaimsJws(header)
                 .getBody();
-        claims.get(ConstantsServer.EMAIL);
-        String accesToken = Jwts.builder()
+
+
+        return Jwts.builder()
                 .setSubject(claims.get(ConstantsServer.EMAIL).toString())
                 .claim(ConstantsServer.ROLE, claims.get(ConstantsServer.ROLE))
                 .setExpiration(Date
@@ -141,32 +143,31 @@ public class RestLogin {
                                 .atZone(ZoneId.systemDefault()).toInstant()))
                 .signWith(key22.key())
                 .compact();
-        return accesToken;
     }
 
     @PUT
     @Path(ConstantsServer.CAMBIARPASSWORD)
-    public Boolean cambiarPassword(@QueryParam(ConstantsServer.EMAIL) String email) {
+    public Response cambiarPassword(@QueryParam(ConstantsServer.EMAIL) String email) {
         String codes = Utils.randomBytes();
 
-        if (serv.addCodAct(email, codes)) {
+        if (Boolean.TRUE.equals(serv.addCodAct(email, codes))) {
 
 
             try {
-                mail.generateAndSendEmail(email, ConstantsServer.NEWPASSW_CODE +codes + ConstantsServer.API_NEWPASSW_CODE +codes + ConstantsServer.A_HTML, ConstantsServer.CAMBIAR_PASSWORD);
+                serv.enviarCorreoNewPass(mail,codes,email);
                 response.getWriter().println(ConstantsServer.CAMBIAR_LA_PASSWORD);
-
+                return Response.status(Response.Status.ACCEPTED).build();
             } catch (Exception e) {
                 try {
                     response.getWriter().println(e.getMessage());
                 } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                    throw new IllegalArgumentException(ex);
                 }
 
 
             }
         }
 
-        return false;
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
 }

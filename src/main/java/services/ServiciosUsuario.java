@@ -1,10 +1,13 @@
 package services;
 
+import common.ConstantsServer;
 import dao.DaoUsuarioImpl;
 import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
 
+import jakarta.mail.MessagingException;
 import model.Usuario;
+import server.MandarMail;
 
 import java.util.List;
 
@@ -22,7 +25,24 @@ public class ServiciosUsuario {
 
         return daoUsuario.login(usuario);
     }
+    public void enviarCorreoCod(MandarMail mail,String codes,String email){
+        try {
+            mail.generateAndSendEmail(email, ConstantsServer.VERIFY_CODE_PATH + codes + ConstantsServer.VERIFY_CODE + codes + ConstantsServer.A_HTML, ConstantsServer.ACTIVAR_CUENTA);
+        } catch (MessagingException e) {
+            throw new IllegalStateException(e);
+        }
 
+    }
+
+    public void enviarCorreoNewPass(MandarMail mail,String codes, String email){
+        try {
+            mail.generateAndSendEmail(email, ConstantsServer.NEWPASSW_CODE + codes + ConstantsServer.API_NEWPASSW_CODE + codes + ConstantsServer.A_HTML, ConstantsServer.CAMBIAR_PASSWORD);
+        } catch (MessagingException e) {
+            throw new IllegalStateException(e);
+        }
+
+
+    }
 
     public Boolean register(Usuario usuario){
         return daoUsuario.register(usuario);

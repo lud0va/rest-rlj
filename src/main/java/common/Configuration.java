@@ -21,11 +21,11 @@ public class Configuration {
         try {
             Properties p = new Properties();
             p.loadFromXML(Configuration.class.getClassLoader().getResourceAsStream("config/correoinfo.xml"));
-            this.host = p.getProperty("host");
-            this.user = p.getProperty("user");
-            this.password = p.getProperty("password");
+            this.host = p.getProperty(ConstantsServer.HOSTPROP);
+            this.user = p.getProperty(ConstantsServer.USERPROP);
+            this.password = p.getProperty(ConstantsServer.PASSWORDPROP);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new IllegalStateException(e);
         }
     }
 

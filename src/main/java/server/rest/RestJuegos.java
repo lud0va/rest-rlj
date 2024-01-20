@@ -24,16 +24,16 @@ public class RestJuegos {
     }
 
     @GET
-
+    @RolesAllowed({ConstantsServer.ADMIN,ConstantsServer.USUARIO})
     public List<Juegos> getAll(){
         return serv.getAll();
 
     }
 
     @POST
-    @RolesAllowed({ConstantsServer.ADMIN})
+
     public Response addGame(Juegos juegos){
-        if (serv.addGame(juegos))
+        if (Boolean.TRUE.equals(serv.addGame(juegos)))
             return Response.status(Response.Status.ACCEPTED).build();
 
        return Response.status(Response.Status.NOT_ACCEPTABLE).build();
@@ -43,7 +43,7 @@ public class RestJuegos {
     @DELETE
     @RolesAllowed({ConstantsServer.ADMIN})
     public Response deleteGame(@QueryParam(ConstantsServer.ID) int id){
-        if (serv.deleteGame(id)){
+        if (Boolean.TRUE.equals(serv.deleteGame(id))){
             return Response.status(Response.Status.NO_CONTENT).build();
         }
         else {
@@ -51,23 +51,23 @@ public class RestJuegos {
         }
     }
     @GET
-    @Path(ConstantsServer.PORJUGADOR)
-    @RolesAllowed({ConstantsServer.ADMIN})
-    public List<Juegos> getGamesPorJugador(@QueryParam(ConstantsServer.IDJUGADOR) int id){
+    @Path(ConstantsServer.PORIDJUGADOR)
+
+    public List<Juegos> getGamesPorJugador(@QueryParam(ConstantsServer.ID_JUGADOR) int id){
         return serv.getGamesPorJugador(id);
     }
 
     @GET
     @Path(ConstantsServer.PORJUEGO)
-
-    public Juegos getJuego(@QueryParam(ConstantsServer.ID)int id){
+    @RolesAllowed({ConstantsServer.ADMIN})
+    public Juegos getJuego(@PathParam(ConstantsServer.ID) int id){
         return serv.getJuego(id);
     }
 
     @PUT
     @RolesAllowed({ConstantsServer.ADMIN})
     public Response updateGame(Juegos juegos){
-        if (serv.update(juegos)){
+        if (Boolean.TRUE.equals(serv.update(juegos))){
             return Response.status(Response.Status.NO_CONTENT).build();
         }else {
             return Response.status(Response.Status.NOT_FOUND).build();

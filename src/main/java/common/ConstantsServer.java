@@ -1,6 +1,12 @@
 package common;
 
 public class ConstantsServer {
+    public static final String USER = "usuario";
+    public static final String NULL = "null";
+
+    private ConstantsServer() {
+    }
+
     public static final String CAMBIARPASSW = "cambiarpassw";
     public static final String CAMBIARPASSWPATH = "/cambiarpassw";
     public static final String PASSWORD = "password";
@@ -10,7 +16,7 @@ public class ConstantsServer {
     public static final String HOME = "home";
     public static final String ADMIN = "admin";
     public static final String USUARIO = "usuario";
-    public static final String LUIS_DECENA_EDUCA_MADRID_ORG = "luis.decena@educa.madrid.org";
+    public static final String LUIS_DECENA_EDUCA_MADRID_ORG = "luis";
     public static final String LUIS_S_S_S = "luis@s.s.s";
     public static final String LUIS = "luis";
     public static final String S = "s";
@@ -33,7 +39,7 @@ public class ConstantsServer {
     public static final String API = "/api";
     public static final String JUEGOSPATH = "/juegos";
     public static final String ID = "id";
-    public static final String PORJUGADOR = "/porjugador";
+    public static final String PORJUGADOR = "/porjugador/{id}";
     public static final String IDJUGADOR = "idjugador";
     public static final String PORJUEGO = "/porjuego";
     public static final String JUGADORES = "/jugadores";
@@ -73,4 +79,10 @@ public class ConstantsServer {
     public static final String MAIL_SMTP_STARTTLS_ENABLE = "mail.smtp.starttls.enable";
     public static final String CONTENT_TYPE = "text/html";
     public static final String SMTP = "smtp";
+    public static final String PORIDJUGADOR = "/poridjugador";
+    public static final String ID_JUGADOR = "idJugador";
+    public static final String IDPATH = "/{id}";
+    public static final String HOSTPROP = "host";
+    public static final String USERPROP = "user";
+    public static final String PASSWORDPROP = "password";
 }

@@ -15,6 +15,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RestJugadores {
+
     private final ServiciosJugadores serv;
 
     @Inject
@@ -27,6 +28,12 @@ public class RestJugadores {
     public List<Jugadores> getAll(){
         return serv.getAll();
 
+    }
+    @GET
+    @Path(ConstantsServer.IDPATH)
+
+    public Jugadores get(@PathParam(ConstantsServer.ID) int id){
+        return serv.getJugador(id);
     }
 
     @DELETE

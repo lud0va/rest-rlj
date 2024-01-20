@@ -20,11 +20,7 @@ import java.io.IOException;
 public class ServletPasswrd extends HttpServlet {
 
 
-    private final DaoUsuarioImpl daoUsuario;
-    @Inject
-    public ServletPasswrd(DaoUsuarioImpl daoUsuario) {
-        this.daoUsuario = daoUsuario;
-    }
+
 
 
 

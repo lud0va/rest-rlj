@@ -1,5 +1,5 @@
 
-N
-java:S1948",Make "daoUsuario" transient or serializable.(àıÿşÿÿÿÿ8À‘¼¦Ï1
-P
-java:S1068".Remove this unused "daoUsuario" private field.(àıÿşÿÿÿÿ8âÓÀ¥Ğ1
+L
+java:S1128"/Remove this unused import 'dao.DaoUsuarioImpl'.(éºİÈ8ğ‰‚ùĞ1
+T
+java:S1128"2Remove this unused import 'jakarta.inject.Inject'.(‘ø”şÿÿÿÿ8ğ‰‚ùĞ1

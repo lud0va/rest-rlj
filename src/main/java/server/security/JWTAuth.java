@@ -2,7 +2,7 @@ package server.security;
 
 import common.ConstantsServer;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jws;
+
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -11,9 +11,9 @@ import jakarta.security.enterprise.AuthenticationException;
 import jakarta.security.enterprise.AuthenticationStatus;
 import jakarta.security.enterprise.authentication.mechanism.http.HttpAuthenticationMechanism;
 import jakarta.security.enterprise.authentication.mechanism.http.HttpMessageContext;
-import jakarta.security.enterprise.credential.BasicAuthenticationCredential;
+
 import jakarta.security.enterprise.identitystore.CredentialValidationResult;
-import jakarta.servlet.annotation.WebFilter;
+
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.core.Context;
@@ -30,10 +30,15 @@ public class JWTAuth implements HttpAuthenticationMechanism {
     @Context
     private SecurityContext securityContext;
 
+
+
+
+   final KeyProvider  key22;
     @Inject
-    private InMemoryIdentityStore identity;
-    @Inject
-    KeyProvider key22;
+    public JWTAuth( KeyProvider key22) {
+
+        this.key22 = key22;
+    }
 
     @Override
     public AuthenticationStatus validateRequest(HttpServletRequest request,
@@ -48,8 +53,11 @@ public class JWTAuth implements HttpAuthenticationMechanism {
 
             String[] valores = header.split(ConstantsServer.SPACE);
 
-            if (valores[0].equalsIgnoreCase(ConstantsServer.BEARER)) {
+            if (valores[1]==null || valores[1].equals(ConstantsServer.NULL)){
+                return httpMessageContext.doNothing();
+            }else if (valores[0].equalsIgnoreCase(ConstantsServer.BEARER)) {
                 String token = header.substring(7);
+
                 try {
                     Claims claims = Jwts.parserBuilder()
                             .setSigningKey(key22.key())
@@ -69,7 +77,7 @@ public class JWTAuth implements HttpAuthenticationMechanism {
 
                 } catch (JwtException e) {
 
-                    throw new RuntimeException(e);
+                    throw new IllegalStateException(e);
                 }
             }
 

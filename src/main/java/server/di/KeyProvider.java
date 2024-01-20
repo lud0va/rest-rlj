@@ -1,13 +1,13 @@
 package server.di;
 
 import common.ConstantsServer;
-import io.jsonwebtoken.SignatureAlgorithm;
+
 import io.jsonwebtoken.security.Keys;
 import jakarta.enterprise.inject.Produces;
 import jakarta.inject.Named;
 import jakarta.inject.Singleton;
 
-import javax.crypto.SecretKey;
+
 import javax.crypto.spec.SecretKeySpec;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
@@ -31,7 +31,7 @@ public class KeyProvider {
 
             return  Keys.hmacShaKeyFor(key2.getEncoded());
         } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
+            throw new IllegalStateException(e);
         }
 
     }
